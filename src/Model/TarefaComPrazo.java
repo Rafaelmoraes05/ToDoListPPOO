@@ -1,37 +1,26 @@
 package Model;
 
 public class TarefaComPrazo implements Tarefa {
+    private String titulo;
     private String descricao;
     private String prazo;
+    private Status status;
 
-    public TarefaComPrazo(String descricao, String prazo) {
+    public TarefaComPrazo(String titulo, String descricao, String prazo) {
+        this.titulo = titulo;
         this.descricao = descricao;
         this.prazo = prazo;
+        this.status = Status.PENDENTE;
     }
 
-    @Override
-    public void exibirDetalhes() {
-        System.out.println("Tarefa com Prazo: " + descricao + " (Prazo: " + prazo + ")");
-    }
+    @Override public String getTitulo() { return titulo; }
+    @Override public String getDescricao() { return descricao; }
+    @Override public String getPrazo() { return prazo; }
+    @Override public Status getStatus() { return status; }
+    @Override public void setStatus(Status status) { this.status = status; }
 
     @Override
     public String toString() {
-        return "Tarefa com Prazo: " + descricao + " (Prazo: " + prazo + ")";
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public String getPrazo() {
-        return prazo;
-    }
-
-    public void setPrazo(String prazo) {
-        this.prazo = prazo;
+        return titulo + " - " + descricao + " | Prazo: " + prazo + " | Status: " + status;
     }
 }

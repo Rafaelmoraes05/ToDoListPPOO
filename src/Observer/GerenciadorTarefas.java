@@ -1,5 +1,6 @@
 package Observer;
 
+import Model.Status;
 import Model.Tarefa;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ public class GerenciadorTarefas {
 
     public void adicionarTarefa(Tarefa tarefa) {
         tarefas.add(tarefa);
-        notificarObservadores("Nova tarefa adicionada: " + tarefa.toString());
+        notificarObservadores("Nova tarefa adicionada: " + tarefa.getTitulo());
     }
 
     public void removerTarefa(Tarefa tarefa) {
@@ -30,5 +31,10 @@ public class GerenciadorTarefas {
 
     public List<Tarefa> getTarefas() {
         return tarefas;
+    }
+
+    public void atualizarStatusTarefa(Tarefa tarefa, Status novoStatus) {
+        tarefa.setStatus(novoStatus);
+        notificarObservadores("Status da tarefa atualizado: " + tarefa.toString());
     }
 }
